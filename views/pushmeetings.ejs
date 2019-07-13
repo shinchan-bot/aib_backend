@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Add Meetings</h3>
+    <form action='/submitmeetings' method='POST'>
+        <p>Title</p>
+        <input type='text' name='title' />
+        <p>Date</p>
+        <input type='date' name='date'/>
+        <p>Description</p>
+        <input type='text' name='description'/>
+        <p>Details</p>
+        <input type='text' name='details'/>
+        <br/>
+        <button type='submit'>Add</button>       
+    </form>
+    <form action="/fetchmeetings" method="GET">
+            <button type='submit'>Meetings</button> 
+    </form>
+    
+</body>
+</html>

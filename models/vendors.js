@@ -21,8 +21,9 @@ module.exports = class AddVendors {
             if(!err){
                 vendors = JSON.parse(fileContent);
             }
-            console.log(vendors)
+            
             vendors.push(this);
+            console.log(vendors)
             fs.writeFile(p, JSON.stringify(vendors), (err) =>{
                 console.log(err);
             })

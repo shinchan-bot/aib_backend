@@ -68,7 +68,7 @@ app.post('/submitvendors', (req,res,next) =>{
 })
 
 app.get('/fetchvendors', (req,res,next) =>{
-    AddData.fetchAll(vendors =>{
+    AddVendors.fetchAll(vendors =>{
         res.send(vendors);
         console.log(vendors)
     })

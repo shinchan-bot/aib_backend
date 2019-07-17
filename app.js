@@ -27,7 +27,7 @@ app.set("view engine", "ejs");
 app.set("views", "views");
 
 
-app.get('/admin', (req,res,next) => {
+app.get('/', (req,res,next) => {
     res.render('admin'); 
 })
 
@@ -114,7 +114,7 @@ app.post('/calculate', (req,res, next) =>{
     console.log(length*height*thickness/(lengthUnit * heightUnit* country));
     let number =length*height*thickness/(lengthUnit * heightUnit* country)
     console.log(number)
-    res.send(number)
+    respo
     //  console.log(Number(req.body.length)*Number(req.body.lengthunit)*Number(req.body.height)*Number(req.body.heightunit)*Number(req.body.thicknessunit))
 })
 

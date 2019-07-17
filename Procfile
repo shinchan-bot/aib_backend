@@ -1,1 +1,1 @@
-web: node -a app.js
+web: node -app aibbackend

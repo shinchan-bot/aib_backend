@@ -102,5 +102,23 @@ app.get('/pushgallery', (req,res, next) =>{
 
 
 
+app.post('/calculate', (req,res, next) =>{
+    console.log(req.body);
+    let length = Number(req.body.length);
+    let height = Number(req.body.height);
+    let lengthUnit = Number(req.body.lu);
+    let heightUnit = Number(req.body.hu);
+    let thickness = Number(req.body.tu);
+    let country = Number(req.body.country);
+    
+    console.log(length*height*thickness/(lengthUnit * heightUnit* country));
+    let number =length*height*thickness/(lengthUnit * heightUnit* country)
+    console.log(number)
+    res.send(number)
+    //  console.log(Number(req.body.length)*Number(req.body.lengthunit)*Number(req.body.height)*Number(req.body.heightunit)*Number(req.body.thicknessunit))
+})
 
-app.listen(3001 || process.env.PORT);
+
+
+
+app.listen( process.env.PORT || 3001);

@@ -5,22 +5,43 @@ const fs = require('fs');
 const AddData = require('./models/add-data');
 const AddVendors = require('./models/vendors');
 const AddNews = require('./models/news');
+const AddGallery = require('./models/gallery');
+const multer = require('multer');
 const Cors = require('cors');
 
 const app = express();
+
+const fileStorage = multer.diskStorage({
+    destination: (req, res,cb) =>{
+        cb(null, "images");
+    },
+    filename: (req, file, cb) => {
+        cb(null,req.body.date + '-' + file.originalname)
+    }
+})
+
 
 app.use(Cors());
 
 
 
-const userAdmin = 
-    {
-        userId:"a",
-        password:"a"
+    const userAdmin = 
+        {
+            userId:"admin",
+            password:"admin"
+        }
+
+    const fileFilter = (req, file, cb ) => {
+        if(file.mimetype === 'image/png' || file.mimetype === 'image/jpg' || file.mimetype === 'image/jpeg'){
+           cb(null, true); 
+        }else{
+            cb(null, false);
+        }
     }
 
-
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(multer({storage: fileStorage, fileFilter: fileFilter}).array('image'));
+app.use(express.static(path.join(__dirname, 'images')));
 
 
 app.set("view engine", "ejs");
@@ -32,7 +53,6 @@ app.get('/', (req,res,next) => {
 })
 
 app.post('/login', (req,res, next) =>{
-    console.log(req.body)
     if(req.body.loginId === userAdmin.userId && req.body.password === userAdmin.password){
         res.redirect('/pushmeetings')
     }
@@ -51,7 +71,6 @@ app.post('/submitmeetings', (req,res,next) =>{
 app.get('/fetchmeetings', (req,res,next) =>{
     AddData.fetchAll(meetings =>{
         res.send(meetings);
-        console.log(meetings)
     })
 
 })
@@ -62,7 +81,6 @@ app.get('/pushvendors', (req,res, next) =>{
 
 app.post('/submitvendors', (req,res,next) =>{
     const vendors = new AddVendors(req.body);
-    console.log(req.body) 
     vendors.save();
     res.redirect('/pushvendors')
 })
@@ -70,7 +88,6 @@ app.post('/submitvendors', (req,res,next) =>{
 app.get('/fetchvendors', (req,res,next) =>{
     AddVendors.fetchAll(vendors =>{
         res.send(vendors);
-        console.log(vendors)
     })
 
 })
@@ -90,7 +107,6 @@ app.post('/submitnews', (req,res,next) =>{
 app.get('/fetchnews', (req,res,next) =>{
     AddNews.fetchAll(news =>{
         res.send(news);
-        console.log(news);
     })
 
 })
@@ -100,27 +116,43 @@ app.get('/pushgallery', (req,res, next) =>{
     res.render('pushgallery')
 })
 
-
-
-app.post('/calculate', (req,res, next) =>{
-    console.log(req.body);
-    let length = Number(req.body.length);
-    let height = Number(req.body.height);
-    let lengthUnit = Number(req.body.lu);
-    let heightUnit = Number(req.body.hu);
-    let thickness = Number(req.body.tu);
-    let country = Number(req.body.country);
+app.post('/submitgallery', (req,res,next) =>{
+    const gallery = new AddGallery( req.body, req.files);
+    gallery.save();
+    res.redirect('/pushgallery')
     
-    console.log(length*height*thickness/(lengthUnit * heightUnit* country));
-    let number =length*height*thickness/(lengthUnit * heightUnit* country)
-    console.log(number)
-    respo
-    //  console.log(Number(req.body.length)*Number(req.body.lengthunit)*Number(req.body.height)*Number(req.body.heightunit)*Number(req.body.thicknessunit))
+})
+
+
+app.get('/fetchgallery', (req,res,next) =>{
+    AddGallery.fetchAll(gallery =>{
+        res.send(gallery);
+    })
+
 })
 
 
 
 
-app.listen(process.env.PORT || 3001, () => {
-    console.log(`app is listening to ${process.env.PORT}`)
-});
+
+
+// app.post('/calculate', (req,res, next) =>{
+//     console.log(req.body);
+//     let length = Number(req.body.length);
+//     let height = Number(req.body.height);
+//     let lengthUnit = Number(req.body.lu);
+//     let heightUnit = Number(req.body.hu);
+//     let thickness = Number(req.body.tu);
+//     let country = Number(req.body.country);
+    
+//     console.log(length*height*thickness/(lengthUnit * heightUnit* country));
+//     let number =length*height*thickness/(lengthUnit * heightUnit* country)
+//     console.log(number)
+//     res.send(number)
+//     //  console.log(Number(req.body.length)*Number(req.body.lengthunit)*Number(req.body.height)*Number(req.body.heightunit)*Number(req.body.thicknessunit))
+// })
+
+
+
+
+app.listen( 3001);

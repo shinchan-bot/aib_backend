@@ -13,6 +13,18 @@
         <a href='/pushnews'>Add News</a>
         <a href='/pushgallery'>Add Gallery</a>
     </nav>
+    <h3>Add Gallery Photos</h3>
+    <form action='/submitgallery' method='POST' enctype="multipart/form-data">
+        <p>Tour Title </p>
+        <input type='text' name='title' />
+        <p>Date</p>
+        <input type='date' name='date'/>
+        <p>Add all Photos of the Tour</p>
+        <input type='file' name="image" multiple/>
+        <br/>
+        <br/>
+        <button type='submit'>Add</button>
+    </form>
     
 </body>
 </html>

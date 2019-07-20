@@ -155,4 +155,4 @@ app.get('/fetchgallery', (req,res,next) =>{
 
 
 
-app.listen( 3001);
+app.listen(process.env.port || 3001);

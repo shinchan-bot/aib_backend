@@ -61,13 +61,13 @@
     <h3 class="bheader">Add News</h3>
     <form class="bform" action='/submitnews' method='POST'>
         <p>Heading</p>
-        <input class="binput" type='text' name='heading'/>
+        <input required class="binput" type='text' name='heading'/>
         <p>Date</p>
-        <input class="binput" type="date" name='date'/>
+        <input required class="binput" type="date" name='date'/>
         <p>Description</p>
-        <input class="binput" type='text' name='description'/>
+        <input required class="binput" type='text' name='description'/>
         <p>Details</p>
-        <input class="binput" type='text' name='details'/>
+        <input required class="binput" type='text' name='details'/>
         <br/>
         <p id="demo"></p>
         <button  onclick="myFunction()" class="bbutton" type='submit'>Add</button>

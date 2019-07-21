@@ -4,9 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Meetings</title>
+    <link rel="stylesheet" href="../util/app.css">
+
 </head>
 <body>
+        <style>
+                nav{
+                    width:50%;
+                    padding: 10px;
+                    margin: 5px;
+                    background: #ffffd8;
+                    border: 1px solid black;
+                    border-radius: 2px;
+                    display: flex;
+                    justify-content: space-around;
+
+                }
+                p{
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                }
+                .bform{
+                    width: 50%;
+                    margin-left: 25%;
+                    padding: 5px;
+                    border: 2px solid black;
+                    border-radius: 2px;
+                    background: #fff8ff;
+                }
+                h3{
+                    text-align: center;
+                }
+                .bbutton{
+                    padding: 2px;
+                    align-self: auto;
+                    background: #ffffd8;
+                    margin-left: 20%;
+                    margin-top: 10px;
+                }
+                .binput{
+                    background: #ffffd5;
+                    padding: 2px;
+                    border-radius: 5px;
+                    border: 1px solid black;
+                }
+                
+                
+            </style>
     <nav>
         <a href='/pushmeetings' >Add Meetings</a>
         <a href='/pushvendors' >Add Vendors</a>
@@ -14,17 +59,26 @@
         <a href='/pushgallery'>Add Gallery</a>
     </nav>
     <h3>Add Meetings</h3>
-    <form action='/submitmeetings' method='POST'>
+    <form class="bform" action='/submitmeetings' method='POST'>
         <p>Title</p>
-        <input type='text' name='title' />
+        <input class="binput" type='text' name='title' />
         <p>Date</p>
-        <input type='date' name='date'/>
+        <input class="binput" type='date' name='date'/>
         <p>Description</p>
-        <input type='text' name='description'/>
+        <input class="binput" type='text' name='description'/>
         <p>Details</p>
-        <input type='text' name='details'/>
+        <input class="binput" type='text' name='details'/>
         <br/>
-        <button type='submit'>Add</button>       
-    </form>    
+        <p id="demo"></p>
+        <button  onclick="myFunction()" class="bbutton" type='submit'>Add</button>
+        
+    </form>
+    <script>
+            function myFunction() {
+              document.getElementById("demo").innerHTML = "UPLOADED!";
+            }
+            </script>
+    
+</body>   
 </body>
 </html>

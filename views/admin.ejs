@@ -4,16 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Admin</title>
+    <link rel="stylesheet" href="app.css">
+
 </head>
 <body>
-    <form action="/login" method="POST">
+    <style>
+        .bform{
+            width: 50%;
+            margin-left: 25%;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 2px;
+            background: #fff8ff;
+        }
+        .bheader{
+            text-align: center;
+        }
+        .bbutton{
+            padding: 2px;
+            align-self: auto;
+            background: #ffffd8;
+            margin-left: 20%;
+            margin-top: 10px;
+        }
+        .binput{
+            background: #ffffd5;
+            padding: 2px;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        p{
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                }
+        
+        
+    </style>
+    <h3 class="bheader">Login</h3>
+    <form class="bform" action="/login" method="POST">
         <p >Login</p>
-        <input type="text" name='loginId' id='loginId' />
+        <input class="binput" type="text" name='loginId' id='loginId' />
         <p>Password</p>
-        <input type='password' name='password' id="password" />
+        <input class="binput" type='password' name='password' id="password" />
         <br/>
-        <button type='submit' placeholder='Login'>Login</button>
+        <button class='bbutton' type='submit' placeholder='Login'>Login</button>
     </form>
 </body>
 </html>

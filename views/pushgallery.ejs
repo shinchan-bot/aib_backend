@@ -4,27 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Gallery</title>
+    <link rel="stylesheet" href="../util/app.css">
+
 </head>
 <body>
-    <nav>
+        <style>
+                nav{
+                    width:50%;
+                    padding: 10px;
+                    margin: 5px;
+                    background: #ffffd8;
+                    border: 1px solid black;
+                    border-radius: 2px;
+                    display: flex;
+                    justify-content: space-around;
+
+                }
+                p{
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                }
+                .bform{
+                    width: 50%;
+                    margin-left: 25%;
+                    padding: 5px;
+                    border: 2px solid black;
+                    border-radius: 2px;
+                    background: #fff8ff;
+                }
+                h3{
+                    text-align: center;
+                }
+                .bbutton{
+                    padding: 2px;
+                    align-self: auto;
+                    background: #ffffd8;
+                    margin-left: 20%;
+                    margin-top: 10px;
+                }
+                .binput{
+                    background: #ffffd5;
+                    padding: 2px;
+                    border-radius: 5px;
+                    border: 1px solid black;
+                }
+                
+                
+            </style>
+    <nav class="bnav">
         <a href='/pushmeetings' >Add Meetings</a>
         <a href='/pushvendors' >Add Vendors</a>
         <a href='/pushnews'>Add News</a>
         <a href='/pushgallery'>Add Gallery</a>
     </nav>
-    <h3>Add Gallery Photos</h3>
-    <form action='/submitgallery' method='POST' enctype="multipart/form-data">
-        <p>Tour Title </p>
-        <input type='text' name='title' />
+    <h3 class="bheader">Add Gallery Photos</h3>
+    <form class="bform" action='/submitgallery' method='POST' enctype="multipart/form-data">
+        <p >Tour Title </p>
+        <input class="binput" type='text' name='title' />
         <p>Date</p>
-        <input type='date' name='date'/>
+        <input class="binput" type='date' name='date'/>
         <p>Add all Photos of the Tour</p>
-        <input type='file' name="image" multiple/>
+        <input class="binput" type='file' name="image" multiple/>
         <br/>
         <br/>
-        <button type='submit'>Add</button>
+        <p id="demo"></p>
+        <button  onclick="myFunction()" class="bbutton" type='submit'>Add</button>
+        
     </form>
+    <script>
+            function myFunction() {
+              document.getElementById("demo").innerHTML = "UPLOADED!";
+            }
+            </script>
     
 </body>
 </html>

@@ -4,19 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Vendors</title>
+    <link rel="stylesheet" href="../util/app.css">
 </head>
 <body>
-    <nav>
+        <style>
+                nav{
+                    width:50%;
+                    padding: 10px;
+                    margin: 5px;
+                    background: #ffffd8;
+                    border: 1px solid black;
+                    border-radius: 2px;
+                    display: flex;
+                    justify-content: space-around;
+
+                }
+                p{
+                    font-family: 'Courier New', Courier, monospace;
+                    font-weight: bold;
+                }
+                .bform{
+                    width: 50%;
+                    margin-left: 25%;
+                    padding: 5px;
+                    border: 2px solid black;
+                    border-radius: 2px;
+                    background: #fff8ff;
+                }
+                h3{
+                    text-align: center;
+                }
+                .bbutton{
+                    padding: 2px;
+                    align-self: auto;
+                    background: #ffffd8;
+                    margin-left: 20%;
+                    margin-top: 10px;
+                }
+                .binput{
+                    background: #ffffd5;
+                    padding: 2px;
+                    border-radius: 5px;
+                    border: 1px solid black;
+                }
+                
+                
+            </style>
+    <nav class="bnav">
         <a href='/pushmeetings' >Add Meetings</a>
         <a href='/pushvendors' >Add Vendors</a>
         <a href='/pushnews'>Add News</a>
         <a href='/pushgallery'>Add Gallery</a>
     </nav>
-    <h3>Add Vendors</h3>
-    <form action='/submitvendors' method="POST" >
+    <h3 class="bheader">Add Vendors</h3>
+    <form class="bform" action='/submitvendors' method="POST" >
         <p>State</p>
-        <select name="state" size="7" >
+        <select class="binput" name="state" size="7" >
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
             <option value="Assam">Assam</option>
@@ -51,15 +95,23 @@
             <option value="West Bengal">West Bengal</option>
         </select>        
         <p>Name</p>
-        <input type='text' name='name'/>
+        <input class="binput" type='text' name='name'/>
         <p>Contact</p>
-        <input type='tel' name='contact' />
+        <input class="binput" type='tel' name='contact' />
         <p>Address</p>
-        <input type='type' name='address' />
+        <input class="binput" type='type' name='address' />
         <br/>
-        <button onclick=document.getElementById(complete).style.display(block) type='submit'>Add</button>
-        <p  id='complete' style='color: red; display: none' >Done</p>
+        <p id="demo"></p>
+        <button  onclick="myFunction()" class="bbutton" type='submit'>Add</button>
+        
     </form>
+    <script>
+            function myFunction() {
+              document.getElementById("demo").innerHTML = "UPLOADED!";
+            }
+            </script>
+    
+</body>
     
 </body>
 </html>

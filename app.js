@@ -140,7 +140,7 @@ app.get('/fetchgallery', (req,res,next) =>{
 })
 
 app.post('/submitmessage', (req, res, next) =>{
-    console.log(req.body);
+    // console.log(req.body);
     transporter.sendMail({
     to:"itskumarravinder@gmail.com",
     from:req.body.email,

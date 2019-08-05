@@ -142,7 +142,7 @@ app.get('/fetchgallery', (req,res,next) =>{
 app.post('/submitmessage', (req, res, next) =>{
     // console.log(req.body);
     transporter.sendMail({
-    to:"itskumarravinder@gmail.com",
+    to:"aibtmf@rediffmail.com",
     from:req.body.email,
     subject:"CONTACT US FORM RESPONSE",
     html:req.body.message

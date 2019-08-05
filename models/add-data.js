@@ -8,6 +8,8 @@ module.exports = class AddData {
         this.date = data.date;
         this.description = data.description;
         this.details = data.details;
+        this.url = data.url;
+        console.log(data)
     }
 
     save(){

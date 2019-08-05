@@ -1,7 +1,6 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 const AddData = require('./models/add-data');
 const AddVendors = require('./models/vendors');
 const AddNews = require('./models/news');

@@ -7,7 +7,11 @@ const AddVendors = require('./models/vendors');
 const AddNews = require('./models/news');
 const AddGallery = require('./models/gallery');
 const multer = require('multer');
+const nodeMailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
 const Cors = require('cors');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -20,6 +24,11 @@ const fileStorage = multer.diskStorage({
     }
 })
 
+const transporter =nodeMailer.createTransport(sendgridTransport({
+    auth:{
+        api_key:process.env.REACT_APP_MAIL_API
+    }
+}))
 
 app.use(Cors());
 
@@ -131,6 +140,21 @@ app.get('/fetchgallery', (req,res,next) =>{
 
 })
 
+app.post('/submitmessage', (req, res, next) =>{
+    console.log(req.body);
+    transporter.sendMail({
+    to:"aibtmf@rediffmail.com",
+    from:req.body.email,
+    subject:"CONTACT US FORM RESPONSE",
+    html:req.body.message
+   })
+   .catch(err =>{
+       console.log(err)
+   })
+   res.redirect('https://fast-ravine-18694.herokuapp.com/contactus')
+   
+})
 
 
-app.listen( process.env.PORT || 3000);
+
+app.listen( process.env.PORT || 3001);

@@ -1,0 +1,4 @@
+/nodemodules
+
+# api keys
+.env
